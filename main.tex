@@ -147,12 +147,20 @@ $\chi$     & \multicolumn{2}{l|}{3.9933}     & 0.8712  & 3.9887 & 3.9834  & 3.99
 \end{center}
 
 \subsection*{Reaching equilibrium}
-Now we choose a 20x20 lattice. We do this to study how many Monte Carlo cycles needed in order to reach the most likely state. We will look at the time corresponding to the number of MC cycles in order to reach an equilibrium situation, where we can start computing various expectation values. To examine this we plot various expectation values as function of MC cycles with $T = 1.0$ and $T =2.4$, for both ordered and random spin orientation.\newline 
+Now we choose a 20x20 lattice. We do this to study how many Monte Carlo cycles needed in order to reach the most likely state. We will look at the time corresponding to the number of MC cycles in order to reach an equilibrium situation, where we can start computing various expectation values. To examine this we plot various expectation values as function of MC cycles with $T = 1.0$ and $T =2.4$, for both ordered and random spin orientation. 
+\newline \newline
+In figure 1 and 2 we can see the mean energy and magnetization as function of the number of Monte Carlo cycles. They are computed with a random spin orientation as start configuration. The temperature set to 1.0 in figure 1 and 2.4 in figure 2. We can see that the curves are smoother and more stable for a lower temperature. This is explained by the acceptation of new configurations in the Metropolis test. Each time we run through a cycle and $\Delta E > 0$, we check if $r \leq w$. Since we know that there is only two possible values for $\Delta E$, there is only to possible values for $w$ as well:
+$$ w = e^{-\beta \Delta E} = e ^{-4J} = 0.0183 $$
+$$ w = e^{-\beta \Delta E} = e ^{-8J} = 0.0003 $$
+for $\beta = 1/{k_B T} = 1 $ when $T =1.0$. 
+\newline For $T = 2.4$ we get: 
+$$ w = e^{-\beta \Delta E} = e ^{-4J/2.4} = 0.1888 $$
+$$ w = e^{-\beta \Delta E} = e ^{-8J/2.4} = 0.0356 $$
+For a higher value of the temperature, $w$ will increase. This means that there will be a bigger chance for the test to accept the new configurations. The test will be accepted one out of five times for $T =2.4$ with $\Delta E = 8J$! This leads to a bigger variation in expected values and the curve will vary before it reach the most likely state.\newline Figure 5 shows us a plot of the total number of accepted configurations as function of the total number of MC cycles. We can see that accepted configurations increases linearly with the number of cycles. 
 
-\subsubsection*{Random spin orientation}
-
-In  figure  4  we  can  see  theplanets positions over 1000 years with the mass of Jupiter set to 1Mj,10Mjand1000Mj.  In figure 4a) we see that the motion of the planets is alm
-
+\newline \newline In figure 3 and 4 we can see the same expectation values as function of the number of Monte Carlo cycles but with a ordered spin orientation. The temperature set to 1.0 in figure 3 and 2.4 in figure 4. As discussed above, we see that the curves are more varying for a higher temperature. 
+We can also see a big different in the start values, where the system starts with a very low energy. Since we have an ordered spin orientation as start configuration this means that all the spins are pointing in the same direction when we start the computation. The system therefor be at its lowest energy level. Anyway, the behavior of the expectation values looks very similar for random and ordered spin orientation. \newline
+We can also see that the expectation values stabilize when the number of cycles reach around 200 000 cycles for both random and ordered spin orientation. 
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.6\textwidth}
@@ -166,7 +174,7 @@ In  figure  4  we  can  see  theplanets positions over 1000 years with the mass 
         \includegraphics[height=1.7in]{4cenergyrandom.png}
         \caption{Energy}
     \end{subfigure}
-    \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles.Random spin orientation as start configuration and $T = 1.0$}
+    \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles. Random spin orientation as start configuration and $T = 1.0$}
 \end{figure*}
 
 \begin{figure*}[t!]
@@ -184,10 +192,6 @@ In  figure  4  we  can  see  theplanets positions over 1000 years with the mass 
     \end{subfigure}
     \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles.Random spin orientation as start configuration and $T = 2.4$}
 \end{figure*}
-
-
-\subsubsection*{Ordered spin orientation}
-
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.6\textwidth}
@@ -203,7 +207,6 @@ In  figure  4  we  can  see  theplanets positions over 1000 years with the mass 
     \end{subfigure}
     \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles. Ordered spin orientation as start configuration and $T = 1.0$}
 \end{figure*}
-
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.6\textwidth}
@@ -217,17 +220,38 @@ In  figure  4  we  can  see  theplanets positions over 1000 years with the mass 
         \includegraphics[height=1.7in]{4cenergy24.png}
         \caption{Energy}
     \end{subfigure}
-    \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles. Ordered spin orientation as start configuration and $T = 1.0$}
+    \caption{Plot of magnetization and energy as function of time corresponding to the number Monte Carlo cycles. Ordered spin orientation as start configuration and $T = 2.4$}
 \end{figure*}
 
- 
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{4caccepted.png}
+\caption{Total number of accepted configurations as function of the total number of Monte Carlo cycles.}
+\end{figure}
 \subsection*{Probability distribution}.
-\subsection*{Phase transition}
+Now we want to look at the probability $P(E)$ for the previous system, with the same temperatures. In figure 
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \includegraphics[height=1.7in]{4dT1.png}
+        \caption{T = 1.0}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \includegraphics[height=1.7in]{4dT24.png}
+        \caption{T = 2.4}
+    \end{subfigure}
+    \caption{Histogram with number of times a given energy appears in our computations after steady state has been reached. Computed variance is 1.3982 for T=2.4 and 0.0522 for T=1.0.}
+\end{figure*}
+
+
+\section*{Phase transition}
 %4e) Figurer. Can you see an indication of a phase transition? 
-\subsubsection*{Critical temperature}
+\subsection*{Critical temperature}
 %Estimate Tc. 
-\section*{Conclusion}
-\section*{References}
+\subection*{Conclusion}
+\subsection*{References}
 
 \end{document}
